@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=delete" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="main w-full min-h-screen bg-zinc-900">
+        <div class="form p-10 text-white">
+            <form action="/create" method="post">
+                <input class="block w-full px-5 py-2 bg-zinc-800 rounded-md" type="text" placeholder="Enter the title.." name="title" required>
+                <textarea class="block w-full mt-3 px-5 py-2 bg-zinc-800 resize-none rounded-md" placeholder="Write the details of your task here" name="details"></textarea>
+                <input class="mt-3 bg-blue-800 px-5 py-2 rounded-md cursor-pointer" type="submit" value="Create Task">
+            </form>
+
+        </div>
+
+        
+
+        <div class="tasks p-10 flex gap-5 flex-wrap">
+
+            <% if (files.length > 0) { %>
+                <% files.forEach(element => { %>
+                    <div class="task min-w-80 px-3 py-4 rounded-md bg-zinc-800 ">
+                        <div class="headWithDelete flex justify-between items-center">
+                            <h1 class="text-white text-3xl"><%= element.replace('.txt', '') %> </h1>
+                            <form action="/delete/<%= element %>" method="post">
+                                <input class="text-blue-500 cursor-pointer material-symbols-outlined" type="submit" value="delete">
+                            </form>
+                        </div>
+
+                        <a class="text-blue-500 inline-block mt-3" href="/file/<%= element %>">Read More..</a>
+                        
+                    </div> 
+                <% }) %>
+         
+            <% } else{ %>
+             <h3 class="text-zinc-600">No task yet.</h3>
+
+            <% } %>
+           
+            
+        </div>
+
+        
+    </div>
+    
+</body>
+</html> 
