@@ -11,9 +11,9 @@
     <div class="main w-full min-h-screen bg-zinc-900">
         <div class="form p-10 text-white">
             <form action="/create" method="post">
-                <input class="block w-full px-5 py-2 bg-zinc-800 rounded-md" type="text" placeholder="Enter the title.." name="title" required>
-                <textarea class="block w-full mt-3 px-5 py-2 bg-zinc-800 resize-none rounded-md" placeholder="Write the details of your task here" name="details"></textarea>
-                <input class="mt-3 bg-blue-800 px-5 py-2 rounded-md cursor-pointer" type="submit" value="Create Task">
+                <input class="block w-full px-5 py-2 bg-zinc-800 rounded-md outline-none" type="text" placeholder="Enter the title.." name="title" required>
+                <textarea class="block w-full mt-3 px-5 py-2 bg-zinc-800 resize-none rounded-md outline-none" placeholder="Write the details of your task here" name="details"></textarea>
+                <input class="mt-3 bg-blue-800 hover:bg-blue-700 px-5 py-2 rounded-md cursor-pointer" type="submit" value="Create Task">
             </form>
 
         </div>
@@ -28,11 +28,15 @@
                         <div class="headWithDelete flex justify-between items-center">
                             <h1 class="text-white text-3xl"><%= element.replace('.txt', '') %> </h1>
                             <form action="/delete/<%= element %>" method="post">
-                                <input class="text-blue-500 cursor-pointer material-symbols-outlined" type="submit" value="delete">
+                                <input class="text-blue-500 hover:text-blue-400 cursor-pointer material-symbols-outlined" type="submit" value="delete">
                             </form>
                         </div>
 
-                        <a class="text-blue-500 inline-block mt-3" href="/file/<%= element %>">Read More..</a>
+                        <div class="flex justify-between items-center mt-3">
+                            <a class="text-blue-500 hover:text-blue-400 inline-block " href="/file/<%= element %>">Read More..</a>
+                            <a class="text-zinc-400 hover:text-zinc-300" href="/edit/<%= element %>">Edit</a>
+                        </div>
+                        
                         
                     </div> 
                 <% }) %>
